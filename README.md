@@ -27,6 +27,27 @@ my_model.save()
 
 # Convert the object to a dictionary
 my_model_json = my_model.to_dict()
+```
+## FileStorage
+`FileStorage` is a storage engine used to save and load objects from JSON files. It offers the following features:
 
+- Storing objects in dictionaries.
+- Saving objects to a JSON file.
+- Loading objects from a JSON file. 
 
-whehwiheiw
+### Usage
+
+```python
+from models.engine.file_storage import FileStorage
+
+# Create a new FileStorage instance
+storage = FileStorage()
+
+# Load objects from a JSON file (if it exists)
+storage.reload()
+
+# Access the stored objects
+objects_dict = storage.all()
+
+# Save objects to a JSON file
+storage.save()
