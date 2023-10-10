@@ -1,0 +1,3 @@
+# Ignores these directories and files
+file.json
+tests_alx_scripts/
