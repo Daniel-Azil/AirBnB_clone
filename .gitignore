@@ -1,3 +1,5 @@
 # Ignores these directories and files
 file.json
+.base_model.py.swo
+.base_model.py.swp
 tests_alx_scripts/
