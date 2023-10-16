@@ -8,10 +8,18 @@
 import cmd
 from models.base_model import BaseModel
 from models import storage
+from models.state import State
+from models.user import User
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
+from models.place import Place
+
 
 def seperate_arg(arg):
     """ A custom function that splits given arguments"""
     return tuple(arg.split())
+
 
 class HBNBCommand(cmd.Cmd):
     """
@@ -20,7 +28,8 @@ class HBNBCommand(cmd.Cmd):
     """
 
     prompt = '(hbnb)'
-    __names_of_class = {"BaseModel"}
+    __names_of_class = {"BaseModel", "User", "State", "City",
+                        "Amenity", "Review", "Place"}
 
     def do_quit(self, cmd_arg):
         """
@@ -59,7 +68,7 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, class_name_id):
         """
             A custom method that displays the details of given
-            classes based on the names and id passed as 
+            classes based on the names and id passed as
             arguments.
         """
         name_id = seperate_arg(class_name_id)
@@ -90,7 +99,8 @@ class HBNBCommand(cmd.Cmd):
             return
         try:
             if parsed_content[1]:
-                saved_content = "{}.{}".format(parsed_content[0], parsed_content[1])
+                saved_content = "{}.{}".format(parsed_content[0],
+                                               parsed_content[1])
                 if saved_content not in storage.all().keys():
                     print("** no instance found **")
                 else:
@@ -152,8 +162,61 @@ class HBNBCommand(cmd.Cmd):
         setattr(obj, key, value)
         storage.save()
 
+    def default(self, cmd_arg):
+        """
+            A method that is used in specifying certain
+            actions to certain unknown arguments used
+            as the command line argument.
+        """
+        unk_argument = cmd_arg.split(".")
+        arg = unk_argument[0]
+        if len(unk_argument) == 1:
+            print("Invalid Command Format: {}".format(cmd_arg))
+            return
+        try:
+            parameter_argument = unk_argument[1].split('(')
+            instruction_command = parameter_argument[0]
+            if instruction_command == "show":
+                parameter_argument = parameter_argument[1].split(")")
+                instance_ID = parameter_argument[0].strip("'").strip('"')
+                argument = arg + ' ' + instance_ID
+                HBNBCommand.do_show(self, argument)
+            elif instruction_command == "update":
+                parameter_argument = parameter_argument[1].split(",")
+                instance_ID = parameter_argument[0].strip("'").strip('"')
+                new_update_name = parameter_argument[1].strip(",")
+                new_update_value = parameter_argument[2].strip()
+                new_update_name = new_update_name.strip("'").strip('"')
+                argument = arg + " " + instance_ID + " " + \
+                    new_update_name + " " + new_update_value
+                HBNBCommand.do_update(self, argument)
+            elif instruction_command == "destroy":
+                parameter_argument = parameter_argument[1].split(")")
+                instance_ID = parameter_argument[0].strip("'").strip('"')
+                argument = arg + " " + instance_ID
+                HBNBCommand.do_destroy(self, argument)
+            elif instruction_command == "all":
+                HBNBCommand.do_all(self, arg)
+            elif instruction_command == "count":
+                HBNBCommand.do_count(self, arg)
+            else:
+                print("Invalid Command Format: {}".format(cmd_arg))
+        except IndexError:
+            print("Invalid Command Format: {}".format(cmd_arg))
 
-
+    def do_count(self, cmd_arg):
+        """
+            A method for Cmd module which counts the number
+            of instances of a given class.
+        """
+        if cmd_arg in HBNBCommand.__names_of_class:
+            all_tally_count = 0
+            for key_element, key_value in storage.all().items():
+                if cmd_arg in key_element:
+                    all_tally_count += 1
+            print(all_tally_count)
+        else:
+            print("** unknown class name **")
 
 
 if __name__ == '__main__':

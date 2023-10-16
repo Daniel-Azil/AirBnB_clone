@@ -29,9 +29,11 @@ class BaseModel():
         if kwargs:
             for key_ele, key_val in kwargs.items():
                 if "created_at" == key_ele:
-                    self.created_at = datetime.strptime(kwargs["created_at"], "%Y-%m-%dT%H:%M:%S.%f")
+                    self.created_at = datetime.strptime(kwargs["created_at"],
+                                                        "%Y-%m-%dT%H:%M:%S.%f")
                 elif "updated_at" == key_ele:
-                    self.updated_at = datetime.strptime(kwargs["updated_at"], "%Y-%m-%dT%H:%M:%S.%f")
+                    self.updated_at = datetime.strptime(kwargs["updated_at"],
+                                                        "%Y-%m-%dT%H:%M:%S.%f")
                 elif "__class__" == key_ele:
                     pass
                 else:
@@ -73,8 +75,8 @@ class BaseModel():
         object created and the dict argument.
         """
         return ("[{}] ({}) {}". format(self.__class__.__name__,
-                                      self.id, self.__dict__))
+                                       self.id, self.__dict__))
 
     def __repr__(self):
         """ A method that returns __str__ """
-        return(self.__str__())
+        return (self.__str__())
