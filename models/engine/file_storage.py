@@ -24,9 +24,9 @@ class FileStorage:
     """
     __file_path = 'file.json'
     __objects = {}
-    class_dict = {"BaseModel": BaseModel, "User": User, "State": State, "City": City, "Place": Place, "Amenity": Amenity,
-            "Review": Review}
-
+    dcn = {"BaseModel": BaseModel, "User": User, "State": State,
+           "City": City, "Place": Place, "Amenity": Amenity,
+           "Review": Review}
 
     def all(self):
         """A custom method that returns dictionary attribute
@@ -59,7 +59,7 @@ class FileStorage:
             with open(self.__file_path, "r") as file:
                 dsl_data_dict = json.load(file)
                 for key_element, key_value in dsl_data_dict.items():
-                    name_of_class = self.class_dict[key_value["__class__"]](**key_value)
-                    self.__objects[key_element] = name_of_class
+                    noc = self.dcn[key_value["__class__"]](**key_value)
+                    self.__objects[key_element] = noc
         except FileNotFoundError:
             pass
