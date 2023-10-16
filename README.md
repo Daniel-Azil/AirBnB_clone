@@ -1,6 +1,49 @@
 # # HBNB Project
 
 The HBNB (Holberton's Airbnb) project is a Python-based project that aims to create a storage and console system for a simple Airbnb clone. It utilizes Python classes to manage and store objects.
+- **create:** Create a new instance of a class and save it to a JSON file.
+    ```python
+    (hbnb) create BaseModel
+    ```
+
+- **show:** Display the details of a specific instance by providing the class name and instance ID.
+    ```python
+    (hbnb) show BaseModel 12345
+    ```
+
+- **destroy:** Remove an instance from the system using the class name and instance ID.
+    ```python
+    (hbnb) destroy BaseModel 12345
+    ```
+
+- **all:** List all instances of a class or all instances in the system.
+    ```python
+    (hbnb) all BaseModel
+    ```
+
+- **update:** Modify the attributes of an instance using the class name, instance ID, attribute name, and new value.
+    ```python
+    (hbnb) update BaseModel 12345 name "New Name"
+    ```
+
+- **count:** Count the number of instances of a specific class.
+    ```python
+    (hbnb) count BaseModel
+    ```
+
+- **quit/EOF:** Exit the HBNB console.
+
+- **Unknown Commands:** The HBNB console handles unknown commands by trying to interpret them as specific actions, such as show, update, or destroy. If the format of the command is incorrect, an error message is displayed.
+
+The HBNB console provides a flexible and interactive way to manage objects in the HBNB project. You can use it to create, view, update, and delete objects, making it a powerful tool for working with your Airbnb clone.
+
+Feel free to explore and interact with the HBNB console to manage your HBNB objects efficiently.
+
+To start the HBNB console, run the following command in your terminal:
+
+```shell
+$ ./console.py
+
 
 ## BaseModel
 
