@@ -77,8 +77,8 @@ my_place.save()
 my_place_json = my_place.to_dict()
 ```
 
-##State
-The State class represents states in the HBNB project. It has a single attribute, name, and inherits from the BaseModel class.
+## State
+The `State` class represents states in the HBNB project. It has a single attribute, name, and inherits from the BaseModel class.
 
 Usage
 ```python
@@ -97,8 +97,8 @@ my_state.save()
 my_state_json = my_state.to_dict()
 ```
 
-User
-The User class represents users in the HBNB project. It has attributes like email, password, first_name, and last_name. It inherits from the BaseModel class.
+## User
+The `User` class represents users in the HBNB project. It has attributes like email, password, first_name, and last_name. It inherits from the BaseModel class.
 
 Usage
 ```python
@@ -119,8 +119,8 @@ my_user.save()
 my_user_json = my_user.to_dict()
 ```
 
-##City
-The City class represents cities in the HBNB project. It has attributes state_id and name. It inherits from the BaseModel class.
+## City
+The `City` class represents cities in the HBNB project. It has attributes state_id and name. It inherits from the BaseModel class.
 
 Usage
 ```python
@@ -140,8 +140,8 @@ my_city.save()
 my_city_json = my_city.to_dict()
 ```
 
-##Amenity
-The Amenity class represents amenities available in accommodation places. It has a single attribute, name, and inherits from the BaseModel class.
+## Amenity
+The `Amenity` class represents amenities available in accommodation places. It has a single attribute, name, and inherits from the BaseModel class.
 
 Usage
 ```python
@@ -160,8 +160,8 @@ my_amenity.save()
 my_amenity_json = my_amenity.to_dict()
 ```
 
-##Review
-The Review class represents reviews for accommodation places. It has attributes place_id, user_id, and text. It inherits from the BaseModel class.
+## Review
+The `Review` class represents reviews for accommodation places. It has attributes place_id, user_id, and text. It inherits from the BaseModel class.
 
 Usage
 ```python
