@@ -43,7 +43,7 @@ To start the HBNB console, run the following command in your terminal:
 
 ```shell
 $ ./console.py
-
+```
 
 ## BaseModel
 
