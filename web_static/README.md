@@ -15,17 +15,3 @@ The project directory is organized as follows:
 ## Usage
 
 To view the project, you can simply open the `index.html` file in a web browser. The HTML and CSS in this phase of the project create a user interface resembling Airbnb's website.
-
-## Contributing
-
-This project is part of a learning process, and contributions are not currently being accepted. However, you're welcome to fork the project and use it as a basis for your own learning or development.
-
-## License
-
-This project is provided as-is and is for educational purposes. It does not carry any specific license, so you are free to use and modify it for your personal or educational projects.
-
-## Acknowledgments
-
-This project is created as a part of the learning process and does not aim to replicate the full functionality of the Airbnb website. It's a great exercise for improving your HTML and CSS skills.
-
-Happy coding!
